@@ -1,7 +1,61 @@
+import Message from "../layout/Message"
+import { useLocation } from "react-router-dom"
+import Container from "../layout/Container"
+import LinkButton from "../layout/LinkButton"
+import ProjectCard from "../project/ProjectCard"
+import { useState, useEffect } from "react"
+
+import "./Projects.css"
+
 const Projects = () => {
+
+    const [projects, setProjects] = useState([])
+
+    const location = useLocation() 
+    let message = ''
+
+    console.log(location)
+    if (location.state) {
+        message = location.state.message
+    }
+
+    useEffect(() => {
+        fetch('http://localhost:5000/projects?_sort=nome_projeto', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log(data)
+            setProjects(data)
+        })
+        .catch((err) => console.log(err))
+
+    }, [])
+
     return (
-        <h1>Projetos</h1>
-    );
+        <div className="project_container">
+            <div className="title_container">
+                <h1>Meus Projetos</h1>
+                <LinkButton to="/newproject" text="Criar Projeto">Novo Projeto</LinkButton>
+            </div>
+            {message && <Message type="success" msg={message} />}
+            <Container customClass="start">
+                {projects.length > 0 &&
+                    projects.map((project) => (
+                        <ProjectCard
+                            id={project.id} 
+                            name={project.nome_projeto}  
+                            budget={project.orcamento_projeto}
+                            category={project.category.name}
+                            key={project.id}
+                        />
+                    ))}
+            </Container>
+        </div>
+    )
 }
 
-export default Projects;
+export default Projects
