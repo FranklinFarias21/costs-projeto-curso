@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom'
 import "./ProjectCard.css"
 
 const ProjectCard = ({id, name, budget, category, handleRemove}) => {
-    console.log(name)
+    const remove = (e) => {
+        e.preventDefault()
+        handleRemove(id)
+    }
     return (
         <div className="project_card">
             <h4>{name}</h4>
@@ -15,10 +18,10 @@ const ProjectCard = ({id, name, budget, category, handleRemove}) => {
                 <span className={`${category.toLowerCase()}`}></span> {category}
             </p>
             <div className="project_card_actions">
-                <Link to="/">
+                <Link to={`/project/${id}`}>
                     <BsPencil /> Editar
                 </Link>
-                <Link>
+                <Link onClick={remove}>
                     <BsFillTrashFill /> Excluir
                 </Link>
             </div>
