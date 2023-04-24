@@ -23,3 +23,19 @@
 .item a:hover{
     color: #FFBB33;
 }
+
+
+@media (max-width: 720px){
+    .navbar img{
+
+        width:  50px;
+    }
+
+    .list{
+        font-size: 14px;
+    }
+
+    .item{
+        margin: 0.7em;
+    }
+}

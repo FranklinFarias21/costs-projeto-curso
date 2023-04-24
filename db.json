@@ -65,6 +65,17 @@
       "cost": 0,
       "service": [],
       "id": 11
+    },
+    {
+      "nome_projeto": "Bolsa Regua",
+      "orcamento_projeto": "20000",
+      "category": {
+        "id": "5",
+        "name": "Analista"
+      },
+      "cost": 0,
+      "service": [],
+      "id": 12
     }
   ],
   "categories": [

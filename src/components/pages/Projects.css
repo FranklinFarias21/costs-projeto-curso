@@ -7,3 +7,13 @@
     justify-content: space-between;
     margin-bottom: 2em;
 }
+
+
+@media (max-width: 720px){
+    .project_container h1{
+        margin-right: 28px;
+        font-size: 24px;
+    }
+    
+    
+}

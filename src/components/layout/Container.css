@@ -18,3 +18,15 @@
     flex-direction: column;
     justify-content: flex-start;
 }
+
+@media (max-width: 1200px) {
+    .container{
+        width: 100%;
+    }
+}
+
+@media (max-width: 720px) {
+    .container{
+        width: 100%;
+    }
+}
